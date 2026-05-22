@@ -1,0 +1,20 @@
+baseURL = 'https://smartrelease-users.net/'
+locale = 'ja-JP'
+title = 'SmartRelease U ユーザーズサイト'
+theme = 'book'
+
+[params]
+  # 右カラムのページ内目次（Table of Contents）を表示する
+  BookToC = true
+
+  # 左カラムのメニューを自動生成する（content/ の階層がそのままメニューになる）
+  BookMenuBundle = false
+
+  # 検索機能を有効化（ローカルでインデックスを生成する軽量な検索）
+  BookSearch = true
+
+  # レスポンシブ対応のシンプルかつクリーンなデザイン指定
+  # ブライトモード / ダークモードの挙動制御（'light', 'dark', 'toggle'）
+  BookTheme = 'auto'
+
+
