@@ -8,6 +8,9 @@ on:
       - closed # PRがクローズされたときにトリガーされます
   workflow_dispatch: # 手動実行用トリガー
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # Node.js 20の非推奨警告を回避し、Node.js 24を使用する
+
 jobs:
   build-and-deploy:
     if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch' # PRマージ、または手動実行の場合のみ実行されます
