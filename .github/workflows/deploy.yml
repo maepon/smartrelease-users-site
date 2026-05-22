@@ -6,10 +6,11 @@ on:
       - main
     types:
       - closed # PRがクローズされたときにトリガーされます
+  workflow_dispatch: # 手動実行用トリガー
 
 jobs:
   build-and-deploy:
-    if: github.event.pull_request.merged == true # マージされてクローズした場合のみ実行されます
+    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch' # PRマージ、または手動実行の場合のみ実行されます
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
