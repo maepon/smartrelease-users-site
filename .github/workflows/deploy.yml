@@ -1,0 +1,37 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main # mainブランチへのプッシュで実行されます
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true # hugo-bookテーマ（サブモジュール）を取得するために必要
+          fetch-depth: 0   # 最終更新日の取得などに必要
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: 'latest'
+          extended: true # hugo-book等、SCSSをコンパイルするテーマを利用する場合はtrueが必須
+
+      - name: Build Hugo Site
+        run: hugo --minify
+
+      - name: Deploy via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.6
+        with:
+          server: ${{ secrets.SFTP_SERVER }}
+          username: ${{ secrets.SFTP_USERNAME }}
+          ssh_private_key: ${{ secrets.SFTP_PRIVATE_KEY }}
+          port: ${{ secrets.SFTP_PORT || '22' }}
+          local_path: './public/*'
+          remote_path: '/www'
+          sftp_only: true
+          args: '-o ConnectTimeout=5'
