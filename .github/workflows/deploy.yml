@@ -1,12 +1,15 @@
 name: Build and Deploy
 
 on:
-  push:
+  pull_request:
     branches:
-      - main # mainブランチへのプッシュで実行されます
+      - main
+    types:
+      - closed # PRがクローズされたときにトリガーされます
 
 jobs:
   build-and-deploy:
+    if: github.event.pull_request.merged == true # マージされてクローズした場合のみ実行されます
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
