@@ -17,14 +17,14 @@ OS に合わせて Hugo Extended をインストールしてください。
   choco install hugo-extended
   ```
 
-### 2. リポジトリのクローンとサブモジュールの初期化
-テーマが含まれているため、サブモジュールの初期化が必要です。
+### 2. リポジトリのクローン
+テーマ（git submodule）を含めて一括でクローンします。
 
 ```bash
-git clone https://github.com/maepon/smartrelease-users-site.git
+git clone --recursive https://github.com/maepon/smartrelease-users-site.git
 cd smartrelease-users-site
-git submodule update --init --recursive
 ```
+※ すでにクローン済みの場合は `git submodule update --init --recursive` を実行してください。
 
 ### 3. ローカルサーバーの起動
 ```bash
@@ -58,10 +58,15 @@ hugo new docs/new-guide.md
 
 ## 運用ルールとデプロイの流れ
 
-詳細な開発フローや技術仕様については [GEMINI.md](./GEMINI.md) を参照してください。
 日常的な記事の更新や修正は、以下のフローで行います。
 
-1. **ブランチ作成**: `main` ブランチから作業用ブランチ（`feat/xxx` や `fix/xxx` や `entry/xxx`）を作成し、変更を Push します。
-2. **Pull Request (PR)**: GitHub 上で `main` ブランチに向けて PR を作成します（変更内容と確認方法を記載）。
-3. **レビューとマージ**: コードオーナー1名以上の承認を得て **Squash and merge** でマージします（Code Owner は緊急時等バイパス可）。
+1. **ブランチ作成**: `main` ブランチから作業用ブランチ（`feat/xxx`, `fix/xxx`, `entry/xxx`）を作成し、変更を Push します。
+2. **Pull Request (PR)**: GitHub 上で `main` ブランチに向けて PR を作成します。
+3. **レビューとマージ**: コードオーナー1名以上の承認を得て **Squash and merge** でマージします。
 4. **自動デプロイ**: マージ完了と同時に GitHub Actions が自動で走り、本番サーバーへデプロイされます。
+
+---
+
+## 注意事項
+- **テーマの変更**: `themes/book` 配下のファイルを直接編集しないでください。
+- **管理者権限**: 緊急時や軽微な修正については、コードオーナーの判断で直接マージを行う場合があります。
