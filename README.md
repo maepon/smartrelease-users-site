@@ -61,7 +61,7 @@ hugo new docs/new-guide.md
 詳細な開発フローや技術仕様については [GEMINI.md](./GEMINI.md) を参照してください。
 日常的な記事の更新や修正は、以下のフローで行います。
 
-1. **ブランチ作成**: `main` ブランチから作業用ブランチ（`feat/xxx` や `fix/xxx`）を作成し、変更を Push します。
+1. **ブランチ作成**: `main` ブランチから作業用ブランチ（`feat/xxx` や `fix/xxx` や `entry/xxx`）を作成し、変更を Push します。
 2. **Pull Request (PR)**: GitHub 上で `main` ブランチに向けて PR を作成します（変更内容と確認方法を記載）。
-3. **レビューとマージ**: 1名以上の承認を得て **Squash and merge** でマージします（Code Owner は緊急時等バイパス可）。
+3. **レビューとマージ**: コードオーナー1名以上の承認を得て **Squash and merge** でマージします（Code Owner は緊急時等バイパス可）。
 4. **自動デプロイ**: マージ完了と同時に GitHub Actions が自動で走り、本番サーバーへデプロイされます。
