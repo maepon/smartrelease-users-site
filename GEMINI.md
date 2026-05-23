@@ -26,9 +26,22 @@ hugo --minify
 ```
 The output will be generated in the `public/` directory.
 
+## Development Workflow
+To maintain code quality and ensure stable deployments, we follow these rules for Pull Requests (PRs), reviews, and merging.
+
+### PR and Review Rules
+- **Branching:** Create a feature or fix branch (e.g., `feat/`, `fix/`) and open a PR against the `main` branch.
+- **PR Description:** Clearly state "what was changed" and "how to verify it."
+- **Review Requirement:** At least one approval is generally required before merging.
+- **Bypass Authority:** **Code Owners** have the authority to bypass the standard review process and merge directly when necessary (e.g., urgent fixes or trivial updates).
+
+### Merging and Post-Merge
+- **Merge Strategy:** Use **Squash and merge** to keep the `main` branch history clean.
+- **Cleanup:** Delete the feature/fix branch immediately after a successful merge.
+
 ## Deployment
 Deployment is automated via **GitHub Actions** (`.github/workflows/deploy.yml`):
-1. **Trigger:** When a Pull Request to the `main` branch is closed and merged, or via manual dispatch (`workflow_dispatch`).
+1. **Trigger:** When a Pull Request to the `main` branch is closed and merged (or via `workflow_dispatch`).
 2. **Process:**
    - Checks out the repository with submodules.
    - Sets up Hugo Extended.
