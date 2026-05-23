@@ -60,6 +60,7 @@ Deployment is automated via **GitHub Actions** (`.github/workflows/deploy.yml`):
 - **Search:** Local search indexing is enabled via `BookSearch = true`.
 - **Theme Mode:** Set to `auto` (supports light/dark mode based on system settings).
 - **Dependabot:** Configured to check for updates weekly for GitHub Actions and Git submodules (`.github/dependabot.yml`).
+- **Code Owners:** Defined in `.github/CODEOWNERS` to manage review requirements and bypass permissions.
 
 ### Theme Customization
 The theme is a submodule in `themes/book`. Avoid making direct changes inside this directory. If customization is needed, override the theme's files by mimicking its structure in the root directory (e.g., `assets/`, `layouts/`).
