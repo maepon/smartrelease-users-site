@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           submodules: true # hugo-bookテーマ（サブモジュール）を取得するために必要
           fetch-depth: 0   # 最終更新日の取得などに必要
