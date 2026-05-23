@@ -41,4 +41,4 @@ jobs:
           local_path: './public/*'
           remote_path: '/www'
           sftp_only: true
-          args: '-o ConnectTimeout=5'
+          args: '-o ConnectTimeout=5 --size-only'

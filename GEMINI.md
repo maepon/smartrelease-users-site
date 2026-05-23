@@ -31,6 +31,7 @@ This file provides critical context and operational rules for AI agents (like Ge
 ### Deployment Process
 1. Build via `hugo --minify`.
 2. Deploy `public/` directory via SFTP (GitHub Action).
+   - **Optimization:** Uses `--size-only` in `SFTP-Deploy-Action` to skip unchanged files and speed up transfer.
 3. Triggered on merge to `main` or manual dispatch.
 
 ### Code Quality
