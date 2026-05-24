@@ -37,3 +37,9 @@ This file provides critical context and operational rules for AI agents (like Ge
 ### Code Quality
 - Ensure all new pages have correct Front Matter (title, weight, etc.).
 - Maintain hierarchical structure in `content/docs/`.
+
+### Investigation & Documentation
+- **Continuous Investigation:** Output all investigation results, architectural mappings, and research findings to the `investigation_outputs/` directory. 
+- **Language:** All reports must be written in **Japanese**.
+- **Format:** Use Markdown for reports and maintain a clear file naming convention (e.g., `theme_structure.md`, `search_logic.md`).
+- **Persistence:** These reports are ignored by Git but serve as the primary source of truth for the current development context.
