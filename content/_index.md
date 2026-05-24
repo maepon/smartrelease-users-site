@@ -7,11 +7,10 @@ type: "docs"
 
 SmartRelease U をご利用の皆様のための情報集約サイトです。
 
-## コンテンツ紹介
+## リンク
 
-- **スタートアップガイド**: はじめて利用する際の手順を解説します。
-- **よくある質問 (FAQ)**: 困ったときの解決策をまとめています。
-- **お知らせ**: 最新のアップデート情報などを掲載します。
+- [SmartRelease U 公式サイト](https://smartrelease.cloud/)
+- [公式サポートページ](https://smartrelease.cloud/support/)
 
 ## はじめに
 
