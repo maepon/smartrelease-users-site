@@ -60,6 +60,7 @@ hugo new docs/new-guide.md
 
 日常的な記事の更新や修正は、以下のフローで行います。
 
+- **コミット署名**: すべてのコミットに **署名（GPGまたはSSH）が必須** です。署名がないコミットは GitHub 上でマージできません。
 1. **ブランチ作成**: `main` ブランチから作業用ブランチ（`feat/xxx`, `fix/xxx`, `entry/xxx`）を作成し、変更を Push します。
 2. **Pull Request (PR)**: GitHub 上で `main` ブランチに向けて PR を作成します。
 3. **レビューとマージ**: コードオーナー1名以上の承認を得て **Squash and merge** でマージします。
