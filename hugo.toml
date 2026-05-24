@@ -4,6 +4,9 @@ title = 'SmartRelease U ユーザーズサイト'
 theme = 'book'
 
 [params]
+  # サイトロゴの設定（static/ からの相対パス）
+  BookLogo = 'images/logo.png'
+
   # 右カラムのページ内目次（Table of Contents）を表示する
   BookToC = true
 
@@ -16,5 +19,3 @@ theme = 'book'
   # レスポンシブ対応のシンプルかつクリーンなデザイン指定
   # ブライトモード / ダークモードの挙動制御（'light', 'dark', 'toggle'）
   BookTheme = 'auto'
-
-
