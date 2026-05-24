@@ -38,6 +38,9 @@ This file provides critical context and operational rules for AI agents (like Ge
 - Ensure all new pages have correct Front Matter (title, weight, etc.).
 - Maintain hierarchical structure in `content/docs/`.
 
+### Git & Commit Rules
+- **Commit Signing:** All commits **MUST** be signed. This is a mandatory requirement for merging Pull Requests on GitHub. AI agents must ensure their environment is configured to sign commits.
+
 ### Investigation & Documentation
 - **Continuous Investigation:** Output all investigation results, architectural mappings, and research findings to the `investigation_outputs/` directory. 
 - **Language:** All reports must be written in **Japanese**.
