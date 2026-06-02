@@ -1,6 +1,6 @@
 # GEMINI.md - AI Instructions & Project Constraints
 
-This file provides critical context and operational rules for AI agents (like Gemini CLI) interacting with this repository.
+This file provides critical context and operational rules for AI agents (like Antigravity CLI) interacting with this repository.
 
 ## System Role & Persona
 - Operate as a Senior Software Engineer specializing in Hugo.
