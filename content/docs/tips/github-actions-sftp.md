@@ -72,14 +72,11 @@ jobs:
           username: ${{ secrets.SFTP_USERNAME }}
           ssh_private_key: ${{ secrets.SFTP_PRIVATE_KEY }}
           port: ${{ secrets.SFTP_PORT || '22' }}
-          local_path: './'      # リポジトリ直下の全ファイルをデプロイする場合
+          local_path: './*'      # リポジトリ直下の全ファイルをデプロイする場合（※末尾の「/*」が必須）
           remote_path: '/www'
           sftp_only: true
           args: '-o ConnectTimeout=5 --size-only'
 ```
-
-> [!TIP]
-> リポジトリ直下ではなく、特定のフォルダ（例: `src` フォルダなど）のみを公開したい場合は、`local_path: './src'` のようにディレクトリを指定します。
 
 ---
 
@@ -125,7 +122,7 @@ jobs:
           username: ${{ secrets.SFTP_USERNAME }}
           ssh_private_key: ${{ secrets.SFTP_PRIVATE_KEY }}
           port: ${{ secrets.SFTP_PORT || '22' }}
-          local_path: './public' # ビルドで生成された公開用ディレクトリを指定
+          local_path: './public/*' # ビルドで生成された公開用ディレクトリの中身を指定（※末尾の「/*」が必須）
           remote_path: '/www'
           sftp_only: true
           args: '-o ConnectTimeout=5 --size-only'
@@ -135,9 +132,12 @@ jobs:
 
 ## 5. 設定のポイントと注意点
 
-### 5.1 `local_path` の指定にはワイルドカードを使用しない（重要）
-`local_path: './public/*'` のように末尾に `/*` を付けると、意図しないディレクトリ構造でアップロードされたり、隠しファイル（例: `.htaccess` や `.well-known`）が転送対象から漏れてしまう原因になります。
-必ず `local_path: './public'` または `local_path: './'` のように、ディレクトリパスのみを指定してください。
+### 5.1 `local_path` の指定にはワイルドカード `/*` が必須（重要）
+`wlixcc/SFTP-Deploy-Action` の仕様上、指定したディレクトリの**「中身」**を `remote_path` へ展開してアップロードするには、末尾に `/*`（ワイルドカード）を付与する必要があります。
+
+もし `local_path: './public'` のようにワイルドカードなしで指定すると、リモートの `/www` 配下に `public` フォルダ自体（`/www/public/`）が作成されてしまい、意図したドキュメントルート（`/www`）の直下にファイルが配置されなくなってしまいます。
+意図通りのディレクトリ構造でデプロイするため、フォルダ内を展開して転送する場合は必ず `local_path: './public/*'` もしくは `local_path: './*'` と記述してください。
+*(※一般的な SFTP アクションや lftp 同期ツールではワイルドカード不要なケースが多いですが、本アクション特有の仕様となります)*
 
 ### 5.2 `sftp_only: true` の指定
 SmartRelease U ではセキュリティ上、シェルアクセスが拒否されています。そのため、SSHコマンド経由で処理を行うのではなく、純粋なSFTPプロトコルのみで処理を完結させるために `sftp_only: true` を指定する必要があります。
