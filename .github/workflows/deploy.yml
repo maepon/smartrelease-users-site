@@ -38,7 +38,7 @@ jobs:
           username: ${{ secrets.SFTP_USERNAME }}
           ssh_private_key: ${{ secrets.SFTP_PRIVATE_KEY }}
           port: ${{ secrets.SFTP_PORT || '22' }}
-          local_path: './public/*'
+          local_path: './public'
           remote_path: '/www'
           sftp_only: true
           args: '-o ConnectTimeout=5 --size-only'
