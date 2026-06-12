@@ -32,13 +32,10 @@ jobs:
         run: hugo --minify
 
       - name: Deploy via SFTP
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.6
+        uses: maepon/smartrelease-u-deploy-action@v1
         with:
-          server: ${{ secrets.SFTP_SERVER }}
-          username: ${{ secrets.SFTP_USERNAME }}
-          ssh_private_key: ${{ secrets.SFTP_PRIVATE_KEY }}
-          port: ${{ secrets.SFTP_PORT || '22' }}
+          sftp_username: ${{ secrets.SFTP_USERNAME }}
+          sftp_private_key: ${{ secrets.SFTP_PRIVATE_KEY }}
           local_path: './public/*'
           remote_path: '/www'
-          sftp_only: true
-          args: '-o ConnectTimeout=5 --size-only'
+          size_only: 'true'
